@@ -1,0 +1,16 @@
+@import "../../styles/base/_all";
+
+ce-register {
+	@extend .view-card;
+
+    input[type="text"],
+    input[type="password"] {
+        width:300px;
+        line-height:1em;
+        padding: 0px 10px;
+        display:block;
+        margin-bottom:15px;
+        font-size:1.5em;
+        line-height:2em;
+    }
+}
