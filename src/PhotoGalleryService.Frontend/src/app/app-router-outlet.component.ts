@@ -8,7 +8,7 @@ export class AppRouterOutletComponent extends RouterOutlet {
 
     connectedCallback() {
         this.setRoutes([
-            { path: "/", name: "error", authRequired: true },
+            { path: "/", name: "photo-gallery-master-detail", authRequired: true },
 
             { path: "/register", name: "register" },
 
