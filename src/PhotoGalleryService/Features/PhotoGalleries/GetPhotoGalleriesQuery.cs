@@ -16,7 +16,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
         public class GetPhotoGalleriesResponse
         {
-            public ICollection<PhotoGalleryApiModel> PhotoGallerys { get; set; } = new HashSet<PhotoGalleryApiModel>();
+            public ICollection<PhotoGalleryApiModel> PhotoGalleries { get; set; } = new HashSet<PhotoGalleryApiModel>();
         }
 
         public class GetPhotoGalleriesHandler : IAsyncRequestHandler<GetPhotoGalleriesRequest, GetPhotoGalleriesResponse>
@@ -30,20 +30,18 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             public async Task<GetPhotoGalleriesResponse> Handle(GetPhotoGalleriesRequest request)
             {
                 var photoGalleries = await _context.PhotoGalleries
-                    .Where( x => x.TenantId == request.TenantId )
-                    .Include(x=>x.PhotoGallerySlides)
+                    .Where(x => x.TenantId == request.TenantId )
+                    .Include(x => x.PhotoGallerySlides)
                     .ToListAsync();
 
                 return new GetPhotoGalleriesResponse()
                 {
-                    PhotoGallerys = photoGalleries.Select(x => PhotoGalleryApiModel.FromPhotoGallery(x)).ToList()
+                    PhotoGalleries = photoGalleries.Select(x => PhotoGalleryApiModel.FromPhotoGallery(x)).ToList()
                 };
             }
 
             private readonly PhotoGalleryServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }
