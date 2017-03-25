@@ -17,6 +17,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         public class AmazonS3UploadDigitalAssetRequest : IRequest<AmazonS3UploadDigitalAssetResponse>
         {
             public InMemoryMultipartFormDataStreamProvider Provider { get; set; }
+            public string Folder { get; set; } = "amazon-s3-upload";
         }
 
         public class AmazonS3UploadDigitalAssetResponse {
@@ -43,15 +44,15 @@ namespace PhotoGalleryService.Features.DigitalAssets
                     var putObjectRequest = new PutObjectRequest()
                     {
                         BucketName = _amazonS3Configuration.BucketName,
-                        Key = filename,
+                        Key = $"{request.Folder}/{filename}",
                         InputStream = stream,
                         CannedACL = PublicRead
                     };
                     
                     var putObjectResponse = await _client.PutObjectAsync(putObjectRequest);
-
+                    
                     response.DigitalAssets.Add(new DigitalAssetApiModel() {
-                        Url = $"{_amazonS3Configuration.BaseUrl}${_amazonS3Configuration.BucketName}\\{filename}"
+                        Url = $"{_amazonS3Configuration.BaseUrl}${_amazonS3Configuration.BucketName}\\{request.Folder}\\{filename}"
                     });
                 }
 
