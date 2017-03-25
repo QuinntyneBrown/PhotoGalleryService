@@ -1,6 +1,4 @@
-﻿using PhotoGalleryService.Features.Core;
-using PhotoGalleryService.Security;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
@@ -8,6 +6,8 @@ using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using PhotoGalleryService.Features.Core;
+using PhotoGalleryService.Security;
 using Swashbuckle.Application;
 using System;
 using System.Reflection;

@@ -27,6 +27,8 @@ namespace PhotoGalleryService.Data.Model
         
 		public bool IsDeleted { get; set; }
 
+        public ICollection<PhotoGallerySlide> PhotoGallerySlides { get; set; } = new HashSet<PhotoGallerySlide>();
+
         public virtual Tenant Tenant { get; set; }
     }
 }

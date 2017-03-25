@@ -20,7 +20,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         }
 
         public class AmazonS3UploadDigitalAssetResponse {
-            public ICollection<DigitalAssetApiModel> DigitalAssets { get; set; }
+            public ICollection<DigitalAssetApiModel> DigitalAssets { get; set; } = new HashSet<DigitalAssetApiModel>();
         }
 
         public class AmazonS3UploadDigitalAssetHandler : IAsyncRequestHandler<AmazonS3UploadDigitalAssetRequest, AmazonS3UploadDigitalAssetResponse>

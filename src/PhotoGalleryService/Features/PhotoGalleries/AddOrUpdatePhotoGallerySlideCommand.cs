@@ -34,7 +34,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 if (entity == null) _context.PhotoGallerySlides.Add(entity = new PhotoGallerySlide());
                 entity.Name = request.PhotoGallerySlide.Name;
                 entity.TenantId = request.TenantId;
-
+                entity.OrderIndex = request.PhotoGallerySlide.OrderIndex;
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdatePhotoGallerySlideResponse();

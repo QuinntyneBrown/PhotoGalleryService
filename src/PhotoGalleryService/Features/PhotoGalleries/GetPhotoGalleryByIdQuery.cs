@@ -1,9 +1,7 @@
 using MediatR;
 using PhotoGalleryService.Data;
 using PhotoGalleryService.Features.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
@@ -32,14 +30,14 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             {                
                 return new GetPhotoGalleryByIdResponse()
                 {
-                    PhotoGallery = PhotoGalleryApiModel.FromPhotoGallery(await _context.PhotoGalleries.SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId))
+                    PhotoGallery = PhotoGalleryApiModel.FromPhotoGallery(await _context.PhotoGalleries
+                    .Include(x => x.PhotoGallerySlides)
+                    .SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId))
                 };
             }
 
             private readonly PhotoGalleryServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

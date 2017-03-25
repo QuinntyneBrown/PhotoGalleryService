@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using PhotoGalleryService.Data.Helpers;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,12 +11,19 @@ namespace PhotoGalleryService.Data.Model
         
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
+
+        [ForeignKey("PhotoGallery")]
+        public int? PhotoGalleryId { get; set; }
         
 		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
-        
-		public DateTime CreatedOn { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public int? OrderIndex { get; set; }
+
+        public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
         
@@ -28,5 +34,7 @@ namespace PhotoGalleryService.Data.Model
 		public bool IsDeleted { get; set; }
 
         public virtual Tenant Tenant { get; set; }
+
+        public virtual PhotoGallery PhotoGallery { get; set; }
     }
 }
