@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Net.Http.Headers;
+
 using static PhotoGalleryService.Features.DigitalAssets.GetDigitalAssetByUniqueIdQuery;
+using static PhotoGalleryService.Features.DigitalAssets.AmazonS3UploadDigitalAssetCommand;
 
 namespace PhotoGalleryService.Features.DigitalAssets
 {
@@ -58,8 +60,8 @@ namespace PhotoGalleryService.Features.DigitalAssets
         [AllowAnonymous]
         public async Task<HttpResponseMessage> Serve([FromUri]GetDigitalAssetByUniqueIdRequest request)
         {
-            GetDigitalAssetByUniqueIdResponse response = await _mediator.Send(request);
-            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            var response = await _mediator.Send(request);
+            var result = new HttpResponseMessage(HttpStatusCode.OK);
             result.Content = new ByteArrayContent(response.DigitalAsset.Bytes);
             result.Content.Headers.ContentType = new MediaTypeHeaderValue(response.DigitalAsset.ContentType);
             return result;
@@ -71,8 +73,9 @@ namespace PhotoGalleryService.Features.DigitalAssets
         {
             if (!Request.Content.IsMimeMultipartContent("form-data"))
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+            var user = await _userManager.GetUserAsync(User);            
             var provider = await Request.Content.ReadAsMultipartAsync(new InMemoryMultipartFormDataStreamProvider());            
-            return Ok(await _mediator.Send(new UploadDigitalAssetCommand.UploadDigitalAssetRequest() { Provider = provider }));
+            return Ok(await _mediator.Send(new AmazonS3UploadDigitalAssetRequest() { Provider = provider, Folder = $"{user.Tenant.UniqueId}" }));
         }
 
         protected readonly IMediator _mediator;

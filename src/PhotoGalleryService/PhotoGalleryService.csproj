@@ -219,7 +219,6 @@
     <Compile Include="Features\DigitalAssets\GetDigitalAssetByUniqueIdQuery.cs" />
     <Compile Include="Features\DigitalAssets\GetDigitalAssetsQuery.cs" />
     <Compile Include="Features\DigitalAssets\RemoveDigitalAssetCommand.cs" />
-    <Compile Include="Features\DigitalAssets\UploadDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
     <Compile Include="Features\DigitalAssets\UploadHandlers\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Features\DigitalAssets\UploadHandlers\StreamHelper.cs" />
