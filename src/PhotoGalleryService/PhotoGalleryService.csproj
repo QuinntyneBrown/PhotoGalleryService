@@ -274,6 +274,7 @@
     <Compile Include="Features\PhotoGalleries\RemovePhotoGallerySlideCommand.cs" />
     <Compile Include="Features\PhotoGalleries\PhotoGallerySlideApiModel.cs" />
     <Compile Include="Features\PhotoGalleries\PhotoGallerySlideController.cs" />
+    <Compile Include="Features\PhotoGalleries\GetLatestGalleriesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

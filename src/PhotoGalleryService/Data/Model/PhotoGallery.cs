@@ -16,6 +16,8 @@ namespace PhotoGalleryService.Data.Model
 		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
+
+        public string Description { get; set; }
         
 		public DateTime CreatedOn { get; set; }
         

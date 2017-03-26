@@ -7,6 +7,7 @@ using static PhotoGalleryService.Features.PhotoGalleries.AddOrUpdatePhotoGallery
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleriesQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByIdQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.RemovePhotoGalleryCommand;
+using static PhotoGalleryService.Features.PhotoGalleries.GetLatestGalleriesQuery;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -45,6 +46,17 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetPhotoGalleriesRequest();
+            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("getlatest")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(GetLatestGalleriesResponse))]
+        public async Task<IHttpActionResult> GetLatest()
+        {
+            var request = new GetLatestGalleriesRequest();
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
