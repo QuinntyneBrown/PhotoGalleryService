@@ -282,6 +282,30 @@
     <Content Include="src\app\photo-galleries\photo-gallery-master-detail.component.scss">
       <DependentUpon>photo-gallery-master-detail.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-edit-embed.component.html">
+      <DependentUpon>photo-gallery-slide-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-edit-embed.component.scss">
+      <DependentUpon>photo-gallery-slide-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-item-embed.component.html">
+      <DependentUpon>photo-gallery-slide-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-item-embed.component.scss">
+      <DependentUpon>photo-gallery-slide-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-list-embed.component.html">
+      <DependentUpon>photo-gallery-slide-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-list-embed.component.scss">
+      <DependentUpon>photo-gallery-slide-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-master-detail-embed.component.html">
+      <DependentUpon>photo-gallery-slide-master-detail-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photo-galleries\photo-gallery-slide-master-detail-embed.component.scss">
+      <DependentUpon>photo-gallery-slide-master-detail-embed.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
     </Content>
@@ -546,6 +570,10 @@
     <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-list-embed.component.ts" />
     <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-item-embed.component.ts" />
     <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.actions.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-slide-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-slide-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-slide-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-slide-master-detail-embed.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\propose-idea - FTP.pubxml" />

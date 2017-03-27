@@ -14,7 +14,7 @@ using static PhotoGalleryService.Features.DigitalAssets.AmazonS3UploadDigitalAss
 namespace PhotoGalleryService.Features.DigitalAssets
 {
     [Authorize]
-    [RoutePrefix("api/digitalAsset")]
+    [RoutePrefix("api/digitalasset")]
     public class DigitalAssetController : ApiController
     {        
         public DigitalAssetController(IMediator mediator, IUserManager userManager)

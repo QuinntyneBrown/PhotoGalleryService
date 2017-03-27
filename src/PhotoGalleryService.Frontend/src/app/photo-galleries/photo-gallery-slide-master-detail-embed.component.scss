@@ -1,0 +1,20 @@
+@import "../../styles/base/_all";
+
+ce-photo-gallery-slide-master-detail-embed {
+    display:block;
+	@extend .view-card;
+
+    ce-photo-gallery-slide-edit-embed,
+    ce-photo-gallery-slide-list-embed {
+        float:left;
+        display:inline-block;
+        position:relative;
+        width:50%;
+    }
+}
+
+ce-photo-gallery-slide-master-detail-embed::after {
+    clear:both;
+    display:block;
+    content:" ";
+}
