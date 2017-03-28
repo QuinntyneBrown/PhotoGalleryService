@@ -31,6 +31,8 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
         if (this.photoGallery) {                
             this._nameInputElement.value = this.photoGallery.name;  
         } else {
+            
+            this._slidesTabTitle.style.display = "none";            
             this._deleteButtonElement.style.display = "none";
         }     
     }
@@ -81,7 +83,9 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
 
     public photoGalleryId: any;
     public photoGallery: PhotoGallery;
-    
+
+    private get _tabsElement(): HTMLElement { return this.querySelector("ce-tabs") as HTMLElement };
+    private get _slidesTabTitle(): HTMLElement { return this.querySelector(".slides-tab-title") as HTMLElement };
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
