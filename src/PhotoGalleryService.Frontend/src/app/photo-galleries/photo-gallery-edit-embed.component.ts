@@ -1,6 +1,6 @@
 import { PhotoGallery } from "./photo-gallery.model";
 import { EditorComponent } from "../shared";
-import {  PhotoGalleryDelete, PhotoGalleryEdit, PhotoGalleryAdd } from "./photo-gallery.actions";
+import { PhotoGalleryDelete, PhotoGalleryEdit, PhotoGalleryAdd } from "./photo-gallery.actions";
 
 const template = require("./photo-gallery-edit-embed.component.html");
 const styles = require("./photo-gallery-edit-embed.component.scss");
@@ -30,8 +30,7 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
 
         if (this.photoGallery) {                
             this._nameInputElement.value = this.photoGallery.name;  
-        } else {
-            
+        } else {            
             this._slidesTabTitle.style.display = "none";            
             this._deleteButtonElement.style.display = "none";
         }     
