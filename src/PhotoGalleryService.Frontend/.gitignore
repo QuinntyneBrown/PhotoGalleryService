@@ -12,6 +12,7 @@
 
 # Secrets
 azureBlobStorageConfiguration.config
+notificationsConfiguration.config
 
 # Build results
 [Dd]ebug/

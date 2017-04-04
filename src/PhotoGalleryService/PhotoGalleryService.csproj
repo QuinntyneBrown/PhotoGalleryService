@@ -226,6 +226,7 @@
     <Compile Include="Features\Core\Cache.cs" />
     <Compile Include="Features\Core\CacheProvider.cs" />
     <Compile Include="Features\Core\HandleError.cs" />
+    <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
     <Compile Include="Features\Core\ICache.cs" />
     <Compile Include="Features\Core\ICacheProvider.cs" />
     <Compile Include="Features\Core\ILogger.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Features\Core\MemoryCache.cs" />
     <Compile Include="Features\Core\RateLimit.cs" />
     <Compile Include="Features\Core\StringExtensions.cs" />
+    <Compile Include="Features\Core\TenantMiddleware.cs" />
     <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3Configuration.cs" />

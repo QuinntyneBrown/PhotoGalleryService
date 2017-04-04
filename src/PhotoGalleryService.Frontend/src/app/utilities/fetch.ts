@@ -1,5 +1,5 @@
 ﻿import { Storage } from "./storage";
-import { STORAGE_KEY, TOKEN_KEY } from "./constants";
+import { STORAGE_KEY, TOKEN_KEY, TENANT_KEY } from "./constants";
 import { Http } from "./http";
 
 export var fetch = (options: { url: string, method?: string, data?: any, headers?: any, authRequired?: boolean, isObjectData?: boolean }) => {
@@ -13,6 +13,8 @@ export var fetch = (options: { url: string, method?: string, data?: any, headers
             options.headers["Authorization"] = `Bearer ${Storage.Instance.get({ name: TOKEN_KEY })}`;
 
 
+        options.headers["Tenant"] = `${Storage.Instance.get({ name: TENANT_KEY })}`;
+        
         for (var prop in options.headers) {
             xhr.setRequestHeader(prop, options.headers[prop]);
         }

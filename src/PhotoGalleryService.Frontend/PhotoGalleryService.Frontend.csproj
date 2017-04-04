@@ -214,6 +214,9 @@
     <Content Include="lib\quill.snow.css" />
     <Content Include="lib\rome.min.css" />
     <Content Include="lib\rome.min.js" />
+    <Content Include="notificationsConfiguration.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="src\app\app.component.html">
       <DependentUpon>app.component.ts</DependentUpon>
