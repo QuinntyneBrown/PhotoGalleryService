@@ -46,7 +46,7 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
         this._deleteButtonElement.removeEventListener("click", this.onDelete);
     }
 
-    public onSave() {
+    public onSave() {        
         const photoGallery = {
             id: this.photoGallery != null ? this.photoGallery.id : null,
             name: this._nameInputElement.value
@@ -69,7 +69,7 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
             case "photo-gallery-id":
                 this.photoGalleryId = newValue;
                 break;
-            case "photoGallery":
+            case "photo-gallery":
                 this.photoGallery = JSON.parse(newValue);
                 if (this.parentNode) {
                     this.photoGalleryId = this.photoGallery.id;
@@ -86,8 +86,8 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
     private get _tabsElement(): HTMLElement { return this.querySelector("ce-tabs") as HTMLElement };
     private get _slidesTabTitle(): HTMLElement { return this.querySelector(".slides-tab-title") as HTMLElement };
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
-    private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
-    private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
+    private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-photo-gallery-button") as HTMLElement };
+    private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-photo-gallery-button") as HTMLElement };
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".photo-gallery-name") as HTMLInputElement;}
 }
 

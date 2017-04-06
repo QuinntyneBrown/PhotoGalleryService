@@ -1,4 +1,4 @@
-import { PhotoGallerySlide } from "./photo-gallery-slide.model";
+import { PhotoGallerySlide } from "../photo-gallery-slides";
 
 export class PhotoGallery { 
     public id:any;

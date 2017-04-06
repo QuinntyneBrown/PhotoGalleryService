@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System;
 using MediatR;
 
+using static PhotoGalleryService.Security.GetClaimsForUserQuery;
+using static PhotoGalleryService.Security.AuthenticateCommand;
+
 namespace PhotoGalleryService.Security
 {
     public class OAuthProvider : OAuthAuthorizationServerProvider
@@ -18,7 +21,7 @@ namespace PhotoGalleryService.Security
         {
             var identity = new ClaimsIdentity(_authConfiguration.AuthType);
             var username = context.OwinContext.Get<string>($"{_authConfiguration.AuthType}:username");
-            var response = await _mediator.Send(new GetClaimsForUserQuery.GetClaimsForUserRequest() { Username = username });
+            var response = await _mediator.Send(new GetClaimsForUserRequest() { Username = username });
 
             foreach (var claim in response.Claims)
             {
@@ -33,7 +36,7 @@ namespace PhotoGalleryService.Security
             {
                 var username = context.Parameters["username"];
                 var password = context.Parameters["password"];
-                var response = await _mediator.Send(new AuthenticateCommand.AuthenticateRequest() { Username = username, Password = password });
+                var response = await _mediator.Send(new AuthenticateRequest() { Username = username, Password = password });
                 if (response.IsAuthenticated)
                 {
                     context.OwinContext.Set($"{_authConfiguration.AuthType}:username", username);

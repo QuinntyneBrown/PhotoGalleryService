@@ -2,10 +2,9 @@ using MediatR;
 using PhotoGalleryService.Data;
 using PhotoGalleryService.Data.Model;
 using PhotoGalleryService.Features.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -14,7 +13,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public class AddOrUpdatePhotoGalleryRequest : IRequest<AddOrUpdatePhotoGalleryResponse>
         {
             public PhotoGalleryApiModel PhotoGallery { get; set; }
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; }            
         }
 
         public class AddOrUpdatePhotoGalleryResponse { }
@@ -31,10 +30,16 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             {
                 var entity = await _context.PhotoGalleries
                     .Include(x => x.PhotoGallerySlides)
-                    .SingleOrDefaultAsync(x => x.Id == request.PhotoGallery.Id && x.TenantId == request.TenantId);
-                if (entity == null) _context.PhotoGalleries.Add(entity = new PhotoGallery());
+                    .Include(x => x.Tenant)
+                    .SingleOrDefaultAsync(x => x.Id == request.PhotoGallery.Id && x.Tenant.UniqueId == request.TenantUniqueId);
+
+                if (entity == null)
+                {
+                    var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
+                    _context.PhotoGalleries.Add(entity = new PhotoGallery() { TenantId = tenant.Id });
+                }
+                
                 entity.Name = request.PhotoGallery.Name;
-                entity.TenantId = request.TenantId;
 
                 entity.PhotoGallerySlides.Clear();
 
@@ -44,10 +49,12 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
                     if (photoGallerySlide == null) { photoGallerySlide = new PhotoGallerySlide(); }
 
-                    photoGallerySlide.TenantId = request.TenantId;
                     photoGallerySlide.PhotoGalleryId = entity.Id;
+
                     photoGallerySlide.ImageUrl = photoGallerySlideApiModel.ImageUrl;
+
                     photoGallerySlide.OrderIndex = photoGallerySlideApiModel.OrderIndex;
+
                     entity.PhotoGallerySlides.Add(photoGallerySlide);
                 }
 

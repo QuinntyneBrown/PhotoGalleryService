@@ -1,8 +1,10 @@
-using PhotoGalleryService.Security;
 using MediatR;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System;
+using System.Net.Http;
+
 using static PhotoGalleryService.Features.PhotoGalleries.AddOrUpdatePhotoGalleryCommand;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleriesQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByIdQuery;
@@ -15,10 +17,9 @@ namespace PhotoGalleryService.Features.PhotoGalleries
     [RoutePrefix("api/photoGallery")]
     public class PhotoGalleryController : ApiController
     {
-        public PhotoGalleryController(IMediator mediator, IUserManager userManager)
+        public PhotoGalleryController(IMediator mediator)
         {
             _mediator = mediator;
-            _userManager = userManager;
         }
 
         [Route("add")]
@@ -26,7 +27,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         [ResponseType(typeof(AddOrUpdatePhotoGalleryResponse))]
         public async Task<IHttpActionResult> Add(AddOrUpdatePhotoGalleryRequest request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -35,7 +36,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         [ResponseType(typeof(AddOrUpdatePhotoGalleryResponse))]
         public async Task<IHttpActionResult> Update(AddOrUpdatePhotoGalleryRequest request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
         
@@ -46,7 +47,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetPhotoGalleriesRequest();
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -57,7 +58,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public async Task<IHttpActionResult> GetLatest()
         {
             var request = new GetLatestGalleriesRequest();
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -66,7 +67,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         [ResponseType(typeof(GetPhotoGalleryByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]GetPhotoGalleryByIdRequest request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
@@ -75,11 +76,10 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         [ResponseType(typeof(RemovePhotoGalleryResponse))]
         public async Task<IHttpActionResult> Remove([FromUri]RemovePhotoGalleryRequest request)
         {
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
             return Ok(await _mediator.Send(request));
         }
 
         protected readonly IMediator _mediator;
-        protected readonly IUserManager _userManager;
     }
 }

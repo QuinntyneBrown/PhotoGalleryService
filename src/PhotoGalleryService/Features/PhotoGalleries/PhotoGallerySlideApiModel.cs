@@ -21,17 +21,23 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             TModel : PhotoGallerySlideApiModel, new()
         {
             var model = new TModel();
+
             model.Id = photoGallerySlide.Id;
+
             model.TenantId = photoGallerySlide.TenantId;
+
             model.Name = photoGallerySlide.Name;
+
             model.OrderIndex = photoGallerySlide.OrderIndex;
+
             model.ImageUrl = photoGallerySlide.ImageUrl;
+
             model.PhotoGalleryId = photoGallerySlide.PhotoGalleryId;
+
             return model;
         }
 
         public static PhotoGallerySlideApiModel FromPhotoGallerySlide(PhotoGallerySlide photoGallerySlide)
             => FromPhotoGallerySlide<PhotoGallerySlideApiModel>(photoGallerySlide);
-
     }
 }

@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
     public class GetPhotoGalleriesQuery
     {
         public class GetPhotoGalleriesRequest : IRequest<GetPhotoGalleriesResponse> { 
-            public int? TenantId { get; set; }        
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class GetPhotoGalleriesResponse
@@ -30,7 +31,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             public async Task<GetPhotoGalleriesResponse> Handle(GetPhotoGalleriesRequest request)
             {
                 var photoGalleries = await _context.PhotoGalleries
-                    .Where(x => x.TenantId == request.TenantId )
+                    .Include(x => x.Tenant)
+                    .Where(x => x.Tenant.UniqueId == request.TenantUniqueId)
                     .Include(x => x.PhotoGallerySlides)
                     .ToListAsync();
 

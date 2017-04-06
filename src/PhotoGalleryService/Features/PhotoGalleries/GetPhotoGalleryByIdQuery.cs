@@ -3,6 +3,7 @@ using PhotoGalleryService.Data;
 using PhotoGalleryService.Features.Core;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -10,7 +11,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
     {
         public class GetPhotoGalleryByIdRequest : IRequest<GetPhotoGalleryByIdResponse> { 
             public int Id { get; set; }
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class GetPhotoGalleryByIdResponse
@@ -32,7 +33,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 {
                     PhotoGallery = PhotoGalleryApiModel.FromPhotoGallery(await _context.PhotoGalleries
                     .Include(x => x.PhotoGallerySlides)
-                    .SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId))
+                    .SingleAsync(x=>x.Id == request.Id))
                 };
             }
 

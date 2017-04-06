@@ -13,7 +13,7 @@ export class PhotoGalleryService {
 
     public get(): Promise<Array<PhotoGallery>> {
         return this._fetch({ url: "/api/photogallery/get", authRequired: true }).then((results:string) => {
-            return (JSON.parse(results) as { photoGallerys: Array<PhotoGallery> }).photoGallerys;
+            return (JSON.parse(results) as { photoGalleries : Array<PhotoGallery> }).photoGalleries;
         });
     }
 
@@ -30,5 +30,4 @@ export class PhotoGalleryService {
     public remove(options: { id : number }) {
         return this._fetch({ url: `/api/photogallery/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
     }
-    
 }

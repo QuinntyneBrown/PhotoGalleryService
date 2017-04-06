@@ -4,6 +4,7 @@ using PhotoGalleryService.Data.Model;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using PhotoGalleryService.Features.Core;
+using System;
 
 namespace PhotoGalleryService.Features.DigitalAssets
 {
@@ -12,6 +13,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         public class AddOrUpdateDigitalAssetRequest : IRequest<AddOrUpdateDigitalAssetResponse>
         {
             public DigitalAssetApiModel DigitalAsset { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class AddOrUpdateDigitalAssetResponse { }
@@ -27,7 +29,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
             public async Task<AddOrUpdateDigitalAssetResponse> Handle(AddOrUpdateDigitalAssetRequest request)
             {
                 var entity = await _context.DigitalAssets
-                    .SingleOrDefaultAsync(x => x.Id == request.DigitalAsset.Id && x.IsDeleted == false);
+                    .SingleOrDefaultAsync(x => x.Id == request.DigitalAsset.Id);
                 if (entity == null) _context.DigitalAssets.Add(entity = new DigitalAsset());
                 entity.Name = request.DigitalAsset.Name;
                 entity.Folder = request.DigitalAsset.Folder;

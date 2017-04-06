@@ -306,6 +306,7 @@
     <Compile Include="Features\PhotoGalleries\PhotoGallerySlideApiModel.cs" />
     <Compile Include="Features\PhotoGalleries\PhotoGallerySlideController.cs" />
     <Compile Include="Features\PhotoGalleries\GetLatestGalleriesQuery.cs" />
+    <Compile Include="Features\Search\SearchConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

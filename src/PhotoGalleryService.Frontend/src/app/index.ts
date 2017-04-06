@@ -1,6 +1,7 @@
 export * from "./digital-assets";
 export * from "./pagination";
 export * from "./photo-galleries";
+export * from "./photo-gallery-slides";
 export * from "./router";
 export * from "./shared";
 export * from "./users";

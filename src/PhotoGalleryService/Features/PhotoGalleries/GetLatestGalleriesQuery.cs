@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
     public class GetLatestGalleriesQuery
     {
         public class GetLatestGalleriesRequest : IRequest<GetLatestGalleriesResponse> {
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class GetLatestGalleriesResponse

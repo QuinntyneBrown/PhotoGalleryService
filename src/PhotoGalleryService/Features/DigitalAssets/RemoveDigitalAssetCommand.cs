@@ -2,6 +2,7 @@ using MediatR;
 using PhotoGalleryService.Data;
 using System.Threading.Tasks;
 using PhotoGalleryService.Features.Core;
+using System;
 
 namespace PhotoGalleryService.Features.DigitalAssets
 {
@@ -10,6 +11,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         public class RemoveDigitalAssetRequest : IRequest<RemoveDigitalAssetResponse>
         {
             public int Id { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class RemoveDigitalAssetResponse { }

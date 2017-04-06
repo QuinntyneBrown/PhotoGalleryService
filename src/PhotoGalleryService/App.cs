@@ -22,6 +22,8 @@ namespace PhotoGalleryService
             WebApiUnityActionFilterProvider.RegisterFilterProviders(config);
             var container = UnityConfiguration.GetContainer();
 
+            app.Use(typeof(TenantMiddleware));
+
             app.MapSignalR();
 
             config.Filters.Add(new HandleErrorAttribute(UnityConfiguration.GetContainer().Resolve<ILoggerFactory>()));

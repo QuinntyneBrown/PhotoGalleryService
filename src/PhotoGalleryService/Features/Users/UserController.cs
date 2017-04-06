@@ -103,7 +103,8 @@ namespace PhotoGalleryService.Features.Users
 
             var request = new GetUserByUsernameRequest();
             request.Username = User.Identity.Name;
-            request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
+            var user = await _userManager.GetUserAsync(User);
+            request.TenantId = user.TenantId;
             
             return Ok(await _mediator.Send(request));
         }

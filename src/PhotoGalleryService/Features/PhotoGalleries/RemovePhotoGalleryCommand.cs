@@ -1,11 +1,9 @@
 using MediatR;
 using PhotoGalleryService.Data;
-using PhotoGalleryService.Data.Model;
 using PhotoGalleryService.Features.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -14,7 +12,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public class RemovePhotoGalleryRequest : IRequest<RemovePhotoGalleryResponse>
         {
             public int Id { get; set; }
-            public int? TenantId { get; set; }
+            public Guid TenantUniqueId { get; set; }
         }
 
         public class RemovePhotoGalleryResponse { }
@@ -29,7 +27,9 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
             public async Task<RemovePhotoGalleryResponse> Handle(RemovePhotoGalleryRequest request)
             {
-                var photoGallery = await _context.PhotoGalleries.SingleAsync(x=>x.Id == request.Id && x.TenantId == request.TenantId);
+                var photoGallery = await _context.PhotoGalleries
+                    .Include(x=>x.Tenant)
+                    .SingleAsync(x=>x.Id == request.Id);
                 photoGallery.IsDeleted = true;
                 await _context.SaveChangesAsync();
                 return new RemovePhotoGalleryResponse();

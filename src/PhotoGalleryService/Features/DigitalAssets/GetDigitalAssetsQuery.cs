@@ -7,12 +7,15 @@ using System.Data.Entity;
 using PhotoGalleryService.Data.Model;
 using static PhotoGalleryService.Features.DigitalAssets.Constants;
 using PhotoGalleryService.Features.Core;
+using System;
 
 namespace PhotoGalleryService.Features.DigitalAssets
 {
     public class GetDigitalAssetsQuery
     {
-        public class GetDigitalAssetsRequest : IRequest<GetDigitalAssetsResponse> { }
+        public class GetDigitalAssetsRequest : IRequest<GetDigitalAssetsResponse> {
+            public Guid TenantUniqueId { get; set; }
+        }
 
         public class GetDigitalAssetsResponse
         {
