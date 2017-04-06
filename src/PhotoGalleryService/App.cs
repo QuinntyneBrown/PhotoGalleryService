@@ -13,16 +13,19 @@ using System;
 using System.Reflection;
 using System.Web.Http;
 
+using static PhotoGalleryService.Features.Core.WebApiUnityActionFilterProvider;
+
 namespace PhotoGalleryService
 {
     public class ApiConfiguration
     {
         public static void Install(HttpConfiguration config, IAppBuilder app)
         {
-            WebApiUnityActionFilterProvider.RegisterFilterProviders(config);
+            RegisterFilterProviders(config);
             var container = UnityConfiguration.GetContainer();
 
             app.Use(typeof(TenantMiddleware));
+            app.Use(typeof(StatusMiddleware));
 
             app.MapSignalR();
 

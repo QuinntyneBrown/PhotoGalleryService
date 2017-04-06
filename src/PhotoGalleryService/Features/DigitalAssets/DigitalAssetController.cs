@@ -32,7 +32,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         [ResponseType(typeof(AddOrUpdateDigitalAssetResponse))]
         public async Task<IHttpActionResult> Add(AddOrUpdateDigitalAssetRequest request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -41,7 +41,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         [ResponseType(typeof(AddOrUpdateDigitalAssetResponse))]
         public async Task<IHttpActionResult> Update(AddOrUpdateDigitalAssetRequest request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -52,7 +52,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetDigitalAssetsRequest();
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -61,7 +61,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         [ResponseType(typeof(GetDigitalAssetByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]GetDigitalAssetByIdRequest request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -70,7 +70,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         [ResponseType(typeof(RemoveDigitalAssetResponse))]
         public async Task<IHttpActionResult> Remove([FromUri]RemoveDigitalAssetRequest request)
         {
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }
 
@@ -81,7 +81,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
         public async Task<HttpResponseMessage> Serve([FromUri]GetDigitalAssetByUniqueIdRequest request)
         {
             var response = await _mediator.Send(request);
-            request.TenantUniqueId = new Guid($"{Request.GetOwinContext().Environment["Tenant"]}");
+            request.TenantUniqueId = Request.GetTenantUniqueId();
 
             var result = new HttpResponseMessage(HttpStatusCode.OK);
             result.Content = new ByteArrayContent(response.DigitalAsset.Bytes);

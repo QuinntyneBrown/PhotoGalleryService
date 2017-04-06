@@ -32,7 +32,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
                 _context = context;
                 _cache = cache;
                 _configuration = lazyConfiguration.Value;
-                _storageAccount = new CloudStorageAccount(new StorageCredentials(_configuration.AccountName,_configuration.KeyValue),true);
+                _storageAccount = new CloudStorageAccount(new StorageCredentials(_configuration.AccountName,_configuration.Key),true);
             }
 
             public async Task<AzureBlobStorageDigitalAssetResponse> Handle(AzureBlobStorageDigitalAssetRequest request)

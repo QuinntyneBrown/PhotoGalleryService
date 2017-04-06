@@ -6,8 +6,7 @@ namespace PhotoGalleryService.Features.DigitalAssets
     public interface IAzureBlobStorageConfiguration
     {
         string AccountName { get; set; }
-        string KeyValue { get; set; }
-        string KeyName { get; set; }
+        string Key { get; set; }
     }
 
     public class AzureBlobStorageConfiguration: ConfigurationSection, IAzureBlobStorageConfiguration
@@ -20,26 +19,14 @@ namespace PhotoGalleryService.Features.DigitalAssets
             set { this["accountName"] = value; }
         }
 
-        [ConfigurationProperty("keyName")]
-        public string KeyName
+        [ConfigurationProperty("key")]
+        public string Key
         {
-            get { return (string)this["keyName"]; }
-            set { this["keyName"] = value; }
+            get { return (string)this["key"]; }
+            set { this["key"] = value; }
         }
 
-
-        [ConfigurationProperty("keyValue")]
-        public string KeyValue
-        {
-            get { return (string)this["keyValue"]; }
-            set { this["keyValue"] = value; }
-        }
-
-        public static IAzureBlobStorageConfiguration Config
-        {
-            get { return ConfigurationManager.GetSection("azureBlobStorageConfiguration") as IAzureBlobStorageConfiguration; }
-        }
-
+        
         public static readonly Lazy<IAzureBlobStorageConfiguration> LazyConfig = new Lazy<IAzureBlobStorageConfiguration>(() =>
         {
             var section = ConfigurationManager.GetSection("azureBlobStorageConfiguration") as IAzureBlobStorageConfiguration;

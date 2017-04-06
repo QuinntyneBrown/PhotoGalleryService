@@ -2,9 +2,9 @@ using MediatR;
 using PhotoGalleryService.Data;
 using PhotoGalleryService.Data.Model;
 using PhotoGalleryService.Features.Core;
-using System.Threading.Tasks;
-using System.Data.Entity;
 using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -33,11 +33,10 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                     .Include(x => x.Tenant)
                     .SingleOrDefaultAsync(x => x.Id == request.PhotoGallery.Id && x.Tenant.UniqueId == request.TenantUniqueId);
 
+                var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
+
                 if (entity == null)
-                {
-                    var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
                     _context.PhotoGalleries.Add(entity = new PhotoGallery() { TenantId = tenant.Id });
-                }
                 
                 entity.Name = request.PhotoGallery.Name;
 
@@ -48,6 +47,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                     var photoGallerySlide = await _context.PhotoGallerySlides.SingleOrDefaultAsync(x => x.Id == photoGallerySlideApiModel.Id);
 
                     if (photoGallerySlide == null) { photoGallerySlide = new PhotoGallerySlide(); }
+
+                    photoGallerySlide.TenantId = tenant.Id;
 
                     photoGallerySlide.PhotoGalleryId = entity.Id;
 

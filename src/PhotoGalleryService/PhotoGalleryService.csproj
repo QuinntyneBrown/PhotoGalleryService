@@ -236,6 +236,7 @@
     <Compile Include="Features\Core\LoggerFactory.cs" />
     <Compile Include="Features\Core\MemoryCache.cs" />
     <Compile Include="Features\Core\RateLimit.cs" />
+    <Compile Include="Features\Core\StatusMiddleware.cs" />
     <Compile Include="Features\Core\StringExtensions.cs" />
     <Compile Include="Features\Core\TenantMiddleware.cs" />
     <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />

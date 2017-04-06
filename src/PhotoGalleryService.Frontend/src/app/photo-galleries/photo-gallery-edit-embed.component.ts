@@ -10,6 +10,7 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
         super();
         this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
+        this.onCreate = this.onCreate.bind(this);
     }
 
     static get observedAttributes() {
@@ -30,6 +31,7 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
 
         if (this.photoGallery) {                
             this._nameInputElement.value = this.photoGallery.name;  
+            this._slidesTabTitle.style.display = "inline-block";
         } else {            
             this._slidesTabTitle.style.display = "none";            
             this._deleteButtonElement.style.display = "none";
@@ -39,11 +41,17 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
     private _setEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
         this._deleteButtonElement.addEventListener("click", this.onDelete);
+        this._createElement.addEventListener("click", this.onCreate);
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
         this._deleteButtonElement.removeEventListener("click", this.onDelete);
+        this._createElement.removeEventListener("click", this.onCreate);
+    }
+
+    public onCreate() {
+        this.dispatchEvent(new PhotoGalleryEdit(new PhotoGallery()));
     }
 
     public onSave() {        
@@ -71,10 +79,11 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
                 break;
             case "photo-gallery":
                 this.photoGallery = JSON.parse(newValue);
-                if (this.parentNode) {
+                if (this.parentNode) {                    
+                    this._slidesTabTitle.style.display = this.photoGallery.id != undefined ? "inline-block" : "none";                                        
                     this.photoGalleryId = this.photoGallery.id;
                     this._nameInputElement.value = this.photoGallery.name != undefined ? this.photoGallery.name : "";
-                    this._titleElement.textContent = this.photoGalleryId ? "Edit PhotoGallery" : "Create PhotoGallery";
+                    this._titleElement.textContent = this.photoGalleryId ? "Edit Photo Gallery" : "Create Photo Gallery";
                 }
                 break;
         }           
@@ -88,7 +97,8 @@ export class PhotoGalleryEditEmbedComponent extends HTMLElement {
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-photo-gallery-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-photo-gallery-button") as HTMLElement };
-    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".photo-gallery-name") as HTMLInputElement;}
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".photo-gallery-name") as HTMLInputElement; }
+    private get _createElement(): HTMLElement { return this.querySelector(".create-photo-gallery") as HTMLElement; }
 }
 
 customElements.define(`ce-photo-gallery-edit-embed`,PhotoGalleryEditEmbedComponent);

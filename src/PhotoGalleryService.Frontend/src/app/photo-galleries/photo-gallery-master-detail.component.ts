@@ -28,6 +28,7 @@ export class PhotoGalleryMasterDetailEmbedComponent extends HTMLElement {
     }
 
     private async _bind() {
+        this.photoGalleries = await this._photoGalleryService.get();
         this.photoGalleryListElement.setAttribute("photo-galleries", JSON.stringify(this.photoGalleries));
     }
 

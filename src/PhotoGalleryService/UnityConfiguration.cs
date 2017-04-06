@@ -1,10 +1,12 @@
-using PhotoGalleryService.Security;
 using MediatR;
 using Microsoft.Practices.Unity;
+using PhotoGalleryService.Features.DigitalAssets;
+using PhotoGalleryService.Features.Notifications;
+using PhotoGalleryService.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhotoGalleryService.Features.Notifications;
+
 
 namespace PhotoGalleryService
 {
@@ -15,7 +17,9 @@ namespace PhotoGalleryService
             var container = new UnityContainer();            
             container.AddMediator<UnityConfiguration>();
             container.RegisterInstance(AuthConfiguration.LazyConfig);
-            container.RegisterInstance(NotificationsConfiguration.LazyConfig);        
+            container.RegisterInstance(NotificationsConfiguration.LazyConfig);
+            container.RegisterInstance(AzureBlobStorageConfiguration.LazyConfig);
+                   
             return container;
         }
     }

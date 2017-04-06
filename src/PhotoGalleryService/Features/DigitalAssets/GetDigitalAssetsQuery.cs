@@ -1,13 +1,14 @@
 using MediatR;
 using PhotoGalleryService.Data;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Data.Entity;
 using PhotoGalleryService.Data.Model;
-using static PhotoGalleryService.Features.DigitalAssets.Constants;
 using PhotoGalleryService.Features.Core;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+
+using static PhotoGalleryService.Features.DigitalAssets.Constants;
 
 namespace PhotoGalleryService.Features.DigitalAssets
 {
