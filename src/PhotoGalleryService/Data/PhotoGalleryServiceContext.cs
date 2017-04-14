@@ -16,6 +16,8 @@ namespace PhotoGalleryService.Data
         DbSet<DigitalAsset> DigitalAssets { get; set; }
         DbSet<PhotoGallery> PhotoGalleries { get; set; }
         DbSet<PhotoGallerySlide> PhotoGallerySlides { get; set; }
+        DbSet<Account> Accounts { get; set; }
+        DbSet<Profile> Profiles { get; set; }
         Task<int> SaveChangesAsync();
     }
 
@@ -35,6 +37,8 @@ namespace PhotoGalleryService.Data
         public DbSet<DigitalAsset> DigitalAssets { get; set; }
         public DbSet<PhotoGallery> PhotoGalleries { get; set; }
         public DbSet<PhotoGallerySlide> PhotoGallerySlides { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         public override int SaveChanges()
         {

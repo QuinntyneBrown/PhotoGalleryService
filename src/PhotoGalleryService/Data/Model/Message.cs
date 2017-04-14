@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using PhotoGalleryService.Data.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoGalleryService.Data.Model

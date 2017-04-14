@@ -7,11 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5304B8C5-019
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGalleryService", "src\PhotoGalleryService\PhotoGalleryService.csproj", "{A8711BC3-F343-4E44-B045-349942559795}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGalleryService.Frontend", "src\PhotoGalleryService.Frontend\PhotoGalleryService.Frontend.csproj", "{F6286226-21E2-4BEB-B76D-F9E2D650E02A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FC7E7A13-76AB-4C0C-B1AF-D3A5B574FCB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGalleryService.Cli", "src\PhotoGalleryService.Cli\PhotoGalleryService.Cli.csproj", "{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGalleryService.Frontend.Admin", "src\PhotoGalleryService.Frontend.Admin\PhotoGalleryService.Frontend.Admin.csproj", "{F6286226-21E2-4BEB-B76D-F9E2D650E02A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGalleryService.Frontend", "src\PhotoGalleryService.Frontend\PhotoGalleryService.Frontend.csproj", "{D97D7068-CF5C-41FD-A682-1B10C6A33CC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,21 +25,26 @@ Global
 		{A8711BC3-F343-4E44-B045-349942559795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8711BC3-F343-4E44-B045-349942559795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8711BC3-F343-4E44-B045-349942559795}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97D7068-CF5C-41FD-A682-1B10C6A33CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97D7068-CF5C-41FD-A682-1B10C6A33CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97D7068-CF5C-41FD-A682-1B10C6A33CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97D7068-CF5C-41FD-A682-1B10C6A33CC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A8711BC3-F343-4E44-B045-349942559795} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
-		{F6286226-21E2-4BEB-B76D-F9E2D650E02A} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
 		{7AF42D0A-FB64-4AF2-AFB9-F6DDAE1E5ACE} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
+		{F6286226-21E2-4BEB-B76D-F9E2D650E02A} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
+		{D97D7068-CF5C-41FD-A682-1B10C6A33CC2} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
 	EndGlobalSection
 EndGlobal

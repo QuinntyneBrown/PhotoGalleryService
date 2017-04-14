@@ -16,7 +16,7 @@ namespace PhotoGalleryService.Migrations
 
             context.Roles.AddOrUpdate(x => x.Name, new Role()
             {
-                Name = Roles.PRODUCT
+                Name = Roles.ACCOUNT_HOLDER
             });
 
             context.Roles.AddOrUpdate(x => x.Name, new Role()

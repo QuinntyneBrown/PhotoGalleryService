@@ -1,7 +1,7 @@
-﻿using PhotoGalleryService.Data.Model;
+﻿using PhotoGalleryService.Data;
+using PhotoGalleryService.Data.Model;
 using System.Threading.Tasks;
 using System.Security.Principal;
-using PhotoGalleryService.Data;
 using System.Data.Entity;
 
 namespace PhotoGalleryService.Security

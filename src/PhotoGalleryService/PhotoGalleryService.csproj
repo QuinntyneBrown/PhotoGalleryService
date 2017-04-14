@@ -308,8 +308,21 @@
     <Compile Include="Features\PhotoGalleries\PhotoGallerySlideController.cs" />
     <Compile Include="Features\PhotoGalleries\GetLatestGalleriesQuery.cs" />
     <Compile Include="Features\Search\SearchConfiguration.cs" />
+    <Compile Include="Features\Accounts\AddOrUpdateAccountCommand.cs" />
+    <Compile Include="Features\Accounts\GetAccountsQuery.cs" />
+    <Compile Include="Features\Accounts\GetAccountByIdQuery.cs" />
+    <Compile Include="Features\Accounts\RemoveAccountCommand.cs" />
+    <Compile Include="Features\Accounts\AccountApiModel.cs" />
+    <Compile Include="Features\Accounts\AccountController.cs" />
+    <Compile Include="Features\Accounts\AddOrUpdateProfileCommand.cs" />
+    <Compile Include="Features\Accounts\GetProfilesQuery.cs" />
+    <Compile Include="Features\Accounts\GetProfileByIdQuery.cs" />
+    <Compile Include="Features\Accounts\RemoveProfileCommand.cs" />
+    <Compile Include="Features\Accounts\ProfileApiModel.cs" />
+    <Compile Include="Features\Accounts\ProfileController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\Accounts\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

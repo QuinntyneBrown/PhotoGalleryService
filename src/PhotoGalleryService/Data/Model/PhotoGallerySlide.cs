@@ -21,6 +21,8 @@ namespace PhotoGalleryService.Data.Model
 
         public string ImageUrl { get; set; }
 
+        public string Description { get; set; }
+
         public int? OrderIndex { get; set; }
 
         public DateTime CreatedOn { get; set; }
