@@ -13,6 +13,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
     {
         public class GetLatestGalleriesRequest : IRequest<GetLatestGalleriesResponse> {
             public Guid TenantUniqueId { get; set; }
+            public int Skip { get; set; }
+            public int Take { get; set; }
         }
 
         public class GetLatestGalleriesResponse
@@ -32,8 +34,11 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             {
                 var galleries = await _context.PhotoGalleries
                     .Include(x => x.PhotoGallerySlides)
+                    .Include(x=>x.Tenant)
                     .OrderByDescending(x=>x.CreatedOn)
-                    .Take(10)
+                    .Where(x => x.Tenant != null && x.Tenant.UniqueId == request.TenantUniqueId)
+                    .Skip(request.Skip)
+                    .Take(request.Take)
                     .ToListAsync();
 
                 return new GetLatestGalleriesResponse()

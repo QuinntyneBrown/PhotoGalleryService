@@ -18,9 +18,13 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             TModel : PhotoGalleryApiModel, new()
         {
             var model = new TModel();
+
             model.Id = photoGallery.Id;
+
             model.TenantId = photoGallery.TenantId;
+
             model.Name = photoGallery.Name;
+
             model.PhotoGallerySlides = photoGallery.PhotoGallerySlides
                 .Select(x => PhotoGallerySlideApiModel.FromPhotoGallerySlide(x))
                 .OrderBy(x=>x.OrderIndex)
