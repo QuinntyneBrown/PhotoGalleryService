@@ -4,7 +4,7 @@ export const photoGalleryActions = {
     ADD: "[PhotoGallery] Add",
     EDIT: "[PhotoGallery] Edit",
     DELETE: "[PhotoGallery] Delete",
-    PHOTO_GALLERIES_CHANGED: "[PhotoGallery] PhotoGalleries Changed"
+    PHOTO_GALLERYS_CHANGED: "[PhotoGallery] PhotoGallerys Changed"
 };
 
 export class PhotoGalleryEvent extends CustomEvent {
@@ -36,11 +36,11 @@ export class PhotoGalleryDelete extends PhotoGalleryEvent {
 }
 
 export class PhotoGallerysChanged extends CustomEvent {
-    constructor(photoGalleries: Array<PhotoGallery>) {
-        super(photoGalleryActions.PHOTO_GALLERIES_CHANGED, {
+    constructor(photoGallerys: Array<PhotoGallery>) {
+        super(photoGalleryActions.PHOTO_GALLERYS_CHANGED, {
             bubbles: true,
             cancelable: true,
-            detail: { photoGalleries }
+            detail: { photoGallerys }
         });
     }
 }

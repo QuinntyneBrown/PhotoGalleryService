@@ -293,19 +293,12 @@
     <Compile Include="Data\Model\Account.cs" />
     <Compile Include="Data\Model\Profile.cs" />
     <Compile Include="Data\Model\PhotoGallery.cs" />
-    <Compile Include="Data\Model\PhotoGallerySlide.cs" />
     <Compile Include="Features\PhotoGalleries\AddOrUpdatePhotoGalleryCommand.cs" />
     <Compile Include="Features\PhotoGalleries\GetPhotoGalleriesQuery.cs" />
     <Compile Include="Features\PhotoGalleries\GetPhotoGalleryByIdQuery.cs" />
     <Compile Include="Features\PhotoGalleries\RemovePhotoGalleryCommand.cs" />
     <Compile Include="Features\PhotoGalleries\PhotoGalleryApiModel.cs" />
     <Compile Include="Features\PhotoGalleries\PhotoGalleryController.cs" />
-    <Compile Include="Features\PhotoGalleries\AddOrUpdatePhotoGallerySlideCommand.cs" />
-    <Compile Include="Features\PhotoGalleries\GetPhotoGallerySlidesQuery.cs" />
-    <Compile Include="Features\PhotoGalleries\GetPhotoGallerySlideByIdQuery.cs" />
-    <Compile Include="Features\PhotoGalleries\RemovePhotoGallerySlideCommand.cs" />
-    <Compile Include="Features\PhotoGalleries\PhotoGallerySlideApiModel.cs" />
-    <Compile Include="Features\PhotoGalleries\PhotoGallerySlideController.cs" />
     <Compile Include="Features\PhotoGalleries\GetLatestGalleriesQuery.cs" />
     <Compile Include="Features\Search\SearchConfiguration.cs" />
     <Compile Include="Features\Accounts\AddOrUpdateAccountCommand.cs" />
@@ -320,9 +313,15 @@
     <Compile Include="Features\Accounts\RemoveProfileCommand.cs" />
     <Compile Include="Features\Accounts\ProfileApiModel.cs" />
     <Compile Include="Features\Accounts\ProfileController.cs" />
+    <Compile Include="Data\Model\Photo.cs" />
+    <Compile Include="Features\Photos\AddOrUpdatePhotoCommand.cs" />
+    <Compile Include="Features\Photos\GetPhotosQuery.cs" />
+    <Compile Include="Features\Photos\GetPhotoByIdQuery.cs" />
+    <Compile Include="Features\Photos\RemovePhotoCommand.cs" />
+    <Compile Include="Features\Photos\PhotoApiModel.cs" />
+    <Compile Include="Features\Photos\PhotoController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\Accounts\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

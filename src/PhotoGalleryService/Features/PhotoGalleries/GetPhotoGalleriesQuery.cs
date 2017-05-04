@@ -33,7 +33,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 var photoGalleries = await _context.PhotoGalleries
                     .Include(x => x.Tenant)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId)
-                    .Include(x => x.PhotoGallerySlides)
+                    .Include(x => x.Photos)
                     .ToListAsync();
 
                 return new GetPhotoGalleriesResponse()

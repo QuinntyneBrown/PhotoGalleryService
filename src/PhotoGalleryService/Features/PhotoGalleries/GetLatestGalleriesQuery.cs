@@ -33,9 +33,9 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             public async Task<GetLatestGalleriesResponse> Handle(GetLatestGalleriesRequest request)
             {
                 var galleries = await _context.PhotoGalleries
-                    .Include(x => x.PhotoGallerySlides)
-                    .Include(x=>x.Tenant)
-                    .OrderByDescending(x=>x.CreatedOn)
+                    .Include(x => x.Photos)
+                    .Include(x => x.Tenant)
+                    .OrderByDescending(x => x.CreatedOn)
                     .Where(x => x.Tenant != null && x.Tenant.UniqueId == request.TenantUniqueId)
                     .Skip(request.Skip)
                     .Take(request.Take)

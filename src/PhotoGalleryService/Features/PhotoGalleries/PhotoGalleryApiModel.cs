@@ -1,4 +1,5 @@
 using PhotoGalleryService.Data.Model;
+using PhotoGalleryService.Features.Photos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +13,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
         public string Name { get; set; }
 
-        public ICollection<PhotoGallerySlideApiModel> PhotoGallerySlides { get; set; } = new HashSet<PhotoGallerySlideApiModel>();
+        public ICollection<PhotoApiModel> Photos { get; set; } = new HashSet<PhotoApiModel>();
 
         public static TModel FromPhotoGallery<TModel>(PhotoGallery photoGallery) where
             TModel : PhotoGalleryApiModel, new()
@@ -25,9 +26,9 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
             model.Name = photoGallery.Name;
 
-            model.PhotoGallerySlides = photoGallery.PhotoGallerySlides
-                .Select(x => PhotoGallerySlideApiModel.FromPhotoGallerySlide(x))
-                .OrderBy(x=>x.OrderIndex)
+            model.Photos = photoGallery.Photos
+                .Select(x => PhotoApiModel.FromPhoto(x))
+                .OrderBy(x => x.OrderIndex)
                 .ToList();
 
             return model;

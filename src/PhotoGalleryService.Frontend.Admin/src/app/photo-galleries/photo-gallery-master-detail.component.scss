@@ -5,11 +5,19 @@ ce-photo-gallery-master-detail {
 	@extend .view-card;
 
     ce-photo-gallery-edit-embed,
-    ce-photo-gallery-list-embed {
+    ce-photo-gallery-paginated-list-embed {
         float:left;
         display:inline-block;
         position:relative;
-        width:50%;
+        width:calc(50% - 10px);
+    }
+
+    ce-photo-gallery-edit-embed {
+        margin-right:10px;
+    }
+
+    ce-photo-gallery-paginated-list-embed {
+        margin-left:10px;
     }
 }
 

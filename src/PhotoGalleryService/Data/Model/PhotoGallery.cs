@@ -1,7 +1,10 @@
 using PhotoGalleryService.Data.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using static PhotoGalleryService.Constants;
 
 namespace PhotoGalleryService.Data.Model
 {
@@ -13,9 +16,10 @@ namespace PhotoGalleryService.Data.Model
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
         
-		[Index("NameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]        
-		public string Name { get; set; }
+		[Index("PhotoGalleryNameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(MaxStringLength)]
+        public string Name { get; set; }
 
         public string Description { get; set; }
         
@@ -29,7 +33,7 @@ namespace PhotoGalleryService.Data.Model
         
 		public bool IsDeleted { get; set; }
 
-        public ICollection<PhotoGallerySlide> PhotoGallerySlides { get; set; } = new HashSet<PhotoGallerySlide>();
+        public ICollection<Photo> Photos { get; set; } = new HashSet<Photo>();
 
         public virtual Tenant Tenant { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿export const environment = {
     production: true,
     applicationContextName: "PhotoGalleryServiceApp",
-    baseUrl: "http://PhotoGalleryService.azurewebsites.net",
+    baseUrl: "",
+    identityBaseUrl: "",
     useUrlRouting: true
 };

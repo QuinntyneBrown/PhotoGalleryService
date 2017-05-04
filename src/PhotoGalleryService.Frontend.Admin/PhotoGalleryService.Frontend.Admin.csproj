@@ -200,9 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="azureBlobStorageConfiguration.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="dist\app.js" />
     <Content Include="index.html" />
     <Content Include="lib\jquery-1.6.4.js" />
@@ -214,13 +211,7 @@
     <Content Include="lib\quill.snow.css" />
     <Content Include="lib\rome.min.css" />
     <Content Include="lib\rome.min.js" />
-    <Content Include="notificationsConfiguration.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="packages.config" />
-    <Content Include="searchConfiguration.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="src\app\app.component.html">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
@@ -263,41 +254,41 @@
     <Content Include="src\app\photo-galleries\photo-gallery-item-embed.component.scss">
       <DependentUpon>photo-gallery-item-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-galleries\photo-gallery-list-embed.component.html">
-      <DependentUpon>photo-gallery-list-embed.component.ts</DependentUpon>
-    </Content>
-    <Content Include="src\app\photo-galleries\photo-gallery-list-embed.component.scss">
-      <DependentUpon>photo-gallery-list-embed.component.ts</DependentUpon>
-    </Content>
     <Content Include="src\app\photo-galleries\photo-gallery-master-detail.component.html">
       <DependentUpon>photo-gallery-master-detail.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\photo-galleries\photo-gallery-master-detail.component.scss">
       <DependentUpon>photo-gallery-master-detail.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-edit-embed.component.html">
-      <DependentUpon>photo-gallery-slide-edit-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photo-galleries\photo-gallery-paginated-list-embed.component.html">
+      <DependentUpon>photo-gallery-paginated-list-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-edit-embed.component.scss">
-      <DependentUpon>photo-gallery-slide-edit-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photo-galleries\photo-gallery-paginated-list-embed.component.scss">
+      <DependentUpon>photo-gallery-paginated-list-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-item-embed.component.html">
-      <DependentUpon>photo-gallery-slide-item-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-edit-embed.component.html">
+      <DependentUpon>photo-edit-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-item-embed.component.scss">
-      <DependentUpon>photo-gallery-slide-item-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-edit-embed.component.scss">
+      <DependentUpon>photo-edit-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-list-embed.component.html">
-      <DependentUpon>photo-gallery-slide-list-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-item-embed.component.html">
+      <DependentUpon>photo-item-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-list-embed.component.scss">
-      <DependentUpon>photo-gallery-slide-list-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-item-embed.component.scss">
+      <DependentUpon>photo-item-embed.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-master-detail-embed.component.html">
-      <DependentUpon>photo-gallery-slide-master-detail-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-master-detail.component.html">
+      <DependentUpon>photo-master-detail.component.ts</DependentUpon>
     </Content>
-    <Content Include="src\app\photo-gallery-slides\photo-gallery-slide-master-detail-embed.component.scss">
-      <DependentUpon>photo-gallery-slide-master-detail-embed.component.ts</DependentUpon>
+    <Content Include="src\app\photos\photo-master-detail.component.scss">
+      <DependentUpon>photo-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo-paginated-list-embed.component.html">
+      <DependentUpon>photo-paginated-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\photos\photo-paginated-list-embed.component.scss">
+      <DependentUpon>photo-paginated-list-embed.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
@@ -551,21 +542,22 @@
     <TypeScriptCompile Include="src\app\digital-assets\digital-asset-item-embed.component.ts" />
     <TypeScriptCompile Include="src\app\digital-assets\digital-asset.actions.ts" />
     <TypeScriptCompile Include="src\app\users\confirm-registration.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-paginated-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.actions.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.service.ts" />
+    <TypeScriptCompile Include="src\app\photos\index.ts" />
+    <TypeScriptCompile Include="src\app\photos\photo.model.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-paginated-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.actions.ts" />
+    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.service.ts" />
     <TypeScriptCompile Include="src\app\photo-galleries\index.ts" />
     <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.model.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.service.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide.actions.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide.model.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-master-detail.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-edit-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-list-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery-item-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.actions.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide-edit-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide-list-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide-item-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\photo-gallery-slide-master-detail-embed.component.ts" />
-    <TypeScriptCompile Include="src\app\photo-gallery-slides\index.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\propose-idea - FTP.pubxml" />

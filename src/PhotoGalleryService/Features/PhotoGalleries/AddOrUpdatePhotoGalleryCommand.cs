@@ -29,7 +29,7 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             public async Task<AddOrUpdatePhotoGalleryResponse> Handle(AddOrUpdatePhotoGalleryRequest request)
             {
                 var entity = await _context.PhotoGalleries
-                    .Include(x => x.PhotoGallerySlides)
+                    .Include(x => x.Photos)
                     .Include(x => x.Tenant)
                     .SingleOrDefaultAsync(x => x.Id == request.PhotoGallery.Id && x.Tenant.UniqueId == request.TenantUniqueId);
 
@@ -40,23 +40,23 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 
                 entity.Name = request.PhotoGallery.Name;
 
-                entity.PhotoGallerySlides.Clear();
+                entity.Photos.Clear();
 
-                foreach(var photoGallerySlideApiModel in request.PhotoGallery.PhotoGallerySlides)
+                foreach(var photoApiModel in request.PhotoGallery.Photos)
                 {
-                    var photoGallerySlide = await _context.PhotoGallerySlides.SingleOrDefaultAsync(x => x.Id == photoGallerySlideApiModel.Id);
+                    var photo = await _context.Photos.SingleOrDefaultAsync(x => x.Id == photoApiModel.Id);
 
-                    if (photoGallerySlide == null) { photoGallerySlide = new PhotoGallerySlide(); }
+                    if (photo == null) { photo = new Photo(); }
 
-                    photoGallerySlide.TenantId = tenant.Id;
+                    photo.TenantId = tenant.Id;
 
-                    photoGallerySlide.PhotoGalleryId = entity.Id;
+                    photo.PhotoGalleryId = entity.Id;
 
-                    photoGallerySlide.ImageUrl = photoGallerySlideApiModel.ImageUrl;
+                    photo.ImageUrl = photoApiModel.ImageUrl;
 
-                    photoGallerySlide.OrderIndex = photoGallerySlideApiModel.OrderIndex;
+                    photo.OrderIndex = photoApiModel.OrderIndex;
 
-                    entity.PhotoGallerySlides.Add(photoGallerySlide);
+                    entity.Photos.Add(photo);
                 }
 
                 await _context.SaveChangesAsync();

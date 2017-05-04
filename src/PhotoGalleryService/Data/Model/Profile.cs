@@ -1,6 +1,9 @@
 using PhotoGalleryService.Data.Helpers;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using static PhotoGalleryService.Constants;
 
 namespace PhotoGalleryService.Data.Model
 {
@@ -15,9 +18,10 @@ namespace PhotoGalleryService.Data.Model
         [ForeignKey("Account")]
         public int? AccountId { get; set; }
 
-        [Index("NameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]        
-		public string Name { get; set; }
+        [Index("ProfileNameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]
+        [StringLength(MaxStringLength)]
+        public string Name { get; set; }
         
 		public DateTime CreatedOn { get; set; }
         

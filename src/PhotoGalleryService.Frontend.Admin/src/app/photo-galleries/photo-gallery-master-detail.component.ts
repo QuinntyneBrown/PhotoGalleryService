@@ -5,10 +5,10 @@ import { PhotoGalleryService } from "./photo-gallery.service";
 const template = require("./photo-gallery-master-detail.component.html");
 const styles = require("./photo-gallery-master-detail.component.scss");
 
-export class PhotoGalleryMasterDetailEmbedComponent extends HTMLElement {
+export class PhotoGalleryMasterDetailComponent extends HTMLElement {
     constructor(
-        private _photoGalleryService: PhotoGalleryService = PhotoGalleryService.Instance
-    ) {
+        private _photoGalleryService: PhotoGalleryService = PhotoGalleryService.Instance	
+	) {
         super();
         this.onPhotoGalleryAdd = this.onPhotoGalleryAdd.bind(this);
         this.onPhotoGalleryEdit = this.onPhotoGalleryEdit.bind(this);
@@ -44,10 +44,11 @@ export class PhotoGalleryMasterDetailEmbedComponent extends HTMLElement {
         this.removeEventListener(photoGalleryActions.DELETE, this.onPhotoGalleryDelete);
     }
 
-    public async onPhotoGalleryAdd(e) {        
+    public async onPhotoGalleryAdd(e) {
+
         await this._photoGalleryService.add(e.detail.photoGallery);
         this.photoGalleries = await this._photoGalleryService.get();
-
+        
         this.photoGalleryListElement.setAttribute("photo-galleries", JSON.stringify(this.photoGalleries));
         this.photoGalleryEditElement.setAttribute("photo-gallery", JSON.stringify(new PhotoGallery()));
     }
@@ -56,16 +57,11 @@ export class PhotoGalleryMasterDetailEmbedComponent extends HTMLElement {
         this.photoGalleryEditElement.setAttribute("photo-gallery", JSON.stringify(e.detail.photoGallery));
     }
 
-    public onPhotoGalleryDelete(e) {
-        if (e.detail.photoGallery.Id != null && e.detail.photoGallery.Id != undefined) {
-            this.photoGalleries.splice(this.photoGalleries.findIndex(o => o.id == e.detail.optionId), 1);
-        } else {
-            for (var i = 0; i < this.photoGalleries.length; ++i) {
-                if (this.photoGalleries[i].name == e.detail.photoGallery.name)
-                    this.photoGalleries.splice(i, 1);
-            }
-        }
+    public async onPhotoGalleryDelete(e) {
 
+        await this._photoGalleryService.remove(e.detail.photoGallery.id);
+        this.photoGalleries = await this._photoGalleryService.get();
+        
         this.photoGalleryListElement.setAttribute("photo-galleries", JSON.stringify(this.photoGalleries));
         this.photoGalleryEditElement.setAttribute("photo-gallery", JSON.stringify(new PhotoGallery()));
     }
@@ -87,7 +83,7 @@ export class PhotoGalleryMasterDetailEmbedComponent extends HTMLElement {
     private photoGalleries: Array<PhotoGallery> = [];
     public photoGallery: PhotoGallery = <PhotoGallery>{};
     public get photoGalleryEditElement(): HTMLElement { return this.querySelector("ce-photo-gallery-edit-embed") as HTMLElement; }
-    public get photoGalleryListElement(): HTMLElement { return this.querySelector("ce-photo-gallery-list-embed") as HTMLElement; }
+    public get photoGalleryListElement(): HTMLElement { return this.querySelector("ce-photo-gallery-paginated-list-embed") as HTMLElement; }
 }
 
-customElements.define(`ce-photo-gallery-master-detail`,PhotoGalleryMasterDetailEmbedComponent);
+customElements.define(`ce-photo-gallery-master-detail`,PhotoGalleryMasterDetailComponent);

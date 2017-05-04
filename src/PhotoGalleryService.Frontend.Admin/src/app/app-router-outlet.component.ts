@@ -10,12 +10,20 @@ export class AppRouterOutletComponent extends RouterOutlet {
         this.setRoutes([
             { path: "/", name: "photo-gallery-master-detail", authRequired: true },
 
+            { path: "/photos", name: "photo-master-detail", authRequired: true },
+
+            { path: "/photogallery/:photoGalleryId", name: "photo-master-detail", authRequired: true },
+
             { path: "/register", name: "register" },
 
             { path: "/change-password", name: "change-password", authRequired: true },
+
             { path: "/confirm-registration/:token", name: "confirm-registration" },
+
             { path: "/login", name: "login" },
+
             { path: "/error", name: "error" },
+
             { path: "*", name: "not-found" }
 
         ] as any);

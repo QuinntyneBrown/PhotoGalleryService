@@ -12,7 +12,7 @@ namespace PhotoGalleryService.Data.Model
     {
         public int Id { get; set; }
 
-        [Index("NameIndex", IsUnique = false)]
+        [Index("TenantNameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]
         [StringLength(MaxStringLength)]
         public string Name { get; set; }

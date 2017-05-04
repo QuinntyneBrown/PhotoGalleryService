@@ -32,8 +32,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 return new GetPhotoGalleryByIdResponse()
                 {
                     PhotoGallery = PhotoGalleryApiModel.FromPhotoGallery(await _context.PhotoGalleries
-                    .Include(x => x.PhotoGallerySlides)
-                    .SingleAsync(x=>x.Id == request.Id))
+                    .Include( x => x.Photos)
+                    .SingleAsync( x => x.Id == request.Id))
                 };
             }
 

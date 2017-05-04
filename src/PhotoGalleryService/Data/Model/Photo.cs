@@ -1,33 +1,33 @@
 using System;
-using System.Collections.Generic;
 using PhotoGalleryService.Data.Helpers;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 using static PhotoGalleryService.Constants;
 
 namespace PhotoGalleryService.Data.Model
 {
     [SoftDelete("IsDeleted")]
-    public class Account: ILoggable
+    public class Photo: ILoggable
     {
         public int Id { get; set; }
         
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
-        
-		[Index("AccountNameIndex", IsUnique = false)]
-        [Column(TypeName = "VARCHAR")]
-        [StringLength(MaxStringLength)]
-        public string Name { get; set; }
 
-        public string Firstname { get; set; }
+        [ForeignKey("PhotoGallery")]
+        public int? PhotoGalleryId { get; set; }
 
-        public string Lastname { get; set; }
+        [Index("PhotoNameIndex", IsUnique = false)]
+        [Column(TypeName = "VARCHAR")]     
+        [StringLength(MaxStringLength)]		   
+		public string Name { get; set; }
 
-        public string Email { get; set; }
+        public string ImageUrl { get; set; }
 
-        public ICollection<Profile> Profiles { get; set; } = new HashSet<Profile>();
+        public string Description { get; set; }
+
+        public int? OrderIndex { get; set; }
 
         public DateTime CreatedOn { get; set; }
         
@@ -40,5 +40,7 @@ namespace PhotoGalleryService.Data.Model
 		public bool IsDeleted { get; set; }
 
         public virtual Tenant Tenant { get; set; }
+
+        public PhotoGallery PhotoGallery { get; set; }
     }
 }

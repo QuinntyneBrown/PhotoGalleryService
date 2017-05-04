@@ -1,0 +1,31 @@
+@import "../../styles/base/_all";
+
+ce-photo-master-detail {
+    display:block;
+	@extend .view-card;
+
+    .photo-master-detail-container {
+        ce-photo-edit-embed,
+        ce-photo-paginated-list-embed {
+            float:left;
+            display:inline-block;
+            position:relative;
+            width:calc(50% - 10px);
+        }
+
+        ce-photo-edit-embed {
+            margin-right:10px;
+        }
+
+        ce-photo-paginated-list-embed {
+            margin-left:10px;
+        }
+    }
+
+}
+
+.photo-master-detail-container::after {
+    clear:both;
+    display:block;
+    content:" ";
+}
