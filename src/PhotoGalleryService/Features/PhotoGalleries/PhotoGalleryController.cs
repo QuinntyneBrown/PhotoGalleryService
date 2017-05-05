@@ -10,6 +10,7 @@ using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByIdQuer
 using static PhotoGalleryService.Features.PhotoGalleries.RemovePhotoGalleryCommand;
 using static PhotoGalleryService.Features.PhotoGalleries.GetLatestGalleriesQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByNameQuery;
+using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryBySlugQuery;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -56,6 +57,16 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         [HttpGet]
         [ResponseType(typeof(GetPhotoGalleryByNameResponse))]
         public async Task<IHttpActionResult> GetByName([FromUri]GetPhotoGalleryByNameRequest request)
+        {
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("getBySlug")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(GetPhotoGalleryBySlugResponse))]
+        public async Task<IHttpActionResult> GetBySlug([FromUri]GetPhotoGalleryBySlugRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

@@ -13,6 +13,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
 
         public string Name { get; set; }
 
+        public string Slug { get; set; }
+
         public ICollection<PhotoApiModel> Photos { get; set; } = new HashSet<PhotoApiModel>();
 
         public static TModel FromPhotoGallery<TModel>(PhotoGallery photoGallery) where
@@ -25,6 +27,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
             model.TenantId = photoGallery.TenantId;
 
             model.Name = photoGallery.Name;
+
+            model.Slug = photoGallery.Slug;
 
             model.Photos = photoGallery.Photos
                 .Select(x => PhotoApiModel.FromPhoto(x))

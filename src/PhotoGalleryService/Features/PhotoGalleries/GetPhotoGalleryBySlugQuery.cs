@@ -7,34 +7,34 @@ using System.Threading.Tasks;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
-    public class GetPhotoGalleryByNameQuery
+    public class GetPhotoGalleryBySlugQuery
     {
-        public class GetPhotoGalleryByNameRequest : IRequest<GetPhotoGalleryByNameResponse>
+        public class GetPhotoGalleryBySlugRequest : IRequest<GetPhotoGalleryBySlugResponse>
         {
-            public string Name { get; set; }
             public Guid TenantUniqueId { get; set; }
+            public string Slug { get; set; }
         }
 
-        public class GetPhotoGalleryByNameResponse
+        public class GetPhotoGalleryBySlugResponse
         {
             public PhotoGalleryApiModel PhotoGallery { get; set; }
         }
 
-        public class GetPhotoGalleryByNameHandler : IAsyncRequestHandler<GetPhotoGalleryByNameRequest, GetPhotoGalleryByNameResponse>
+        public class GetPhotoGalleryBySlugHandler : IAsyncRequestHandler<GetPhotoGalleryBySlugRequest, GetPhotoGalleryBySlugResponse>
         {
-            public GetPhotoGalleryByNameHandler(PhotoGalleryServiceContext context, ICache cache)
+            public GetPhotoGalleryBySlugHandler(PhotoGalleryServiceContext context, ICache cache)
             {
                 _context = context;
                 _cache = cache;
             }
 
-            public async Task<GetPhotoGalleryByNameResponse> Handle(GetPhotoGalleryByNameRequest request)
+            public async Task<GetPhotoGalleryBySlugResponse> Handle(GetPhotoGalleryBySlugRequest request)
             {
-                return new GetPhotoGalleryByNameResponse()
+                return new GetPhotoGalleryBySlugResponse()
                 {
                     PhotoGallery = PhotoGalleryApiModel.FromPhotoGallery(await _context.PhotoGalleries
                     .Include(x => x.Photos)
-                    .SingleAsync(x => x.Name == request.Name))
+                    .SingleAsync(x => x.Slug == request.Slug))
                 };
             }
 

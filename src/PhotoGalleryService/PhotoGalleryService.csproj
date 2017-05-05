@@ -321,6 +321,7 @@
     <Compile Include="Features\Photos\PhotoApiModel.cs" />
     <Compile Include="Features\Photos\PhotoController.cs" />
     <Compile Include="Features\PhotoGalleries\GetPhotoGalleryByNameQuery.cs" />
+    <Compile Include="Features\PhotoGalleries\GetPhotoGalleryBySlugQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

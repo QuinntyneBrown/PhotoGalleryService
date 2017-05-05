@@ -21,6 +21,8 @@ namespace PhotoGalleryService.Data.Model
         [StringLength(MaxStringLength)]
         public string Name { get; set; }
 
+        public string Slug { get; set; }
+
         public string Description { get; set; }
         
 		public DateTime CreatedOn { get; set; }

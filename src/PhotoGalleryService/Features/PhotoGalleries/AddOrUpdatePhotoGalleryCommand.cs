@@ -40,6 +40,8 @@ namespace PhotoGalleryService.Features.PhotoGalleries
                 
                 entity.Name = request.PhotoGallery.Name;
 
+                entity.Slug = request.PhotoGallery.Name.GenerateSlug();
+
                 entity.Photos.Clear();
 
                 foreach(var photoApiModel in request.PhotoGallery.Photos)
