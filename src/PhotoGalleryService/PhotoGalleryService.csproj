@@ -320,6 +320,7 @@
     <Compile Include="Features\Photos\RemovePhotoCommand.cs" />
     <Compile Include="Features\Photos\PhotoApiModel.cs" />
     <Compile Include="Features\Photos\PhotoController.cs" />
+    <Compile Include="Features\PhotoGalleries\GetPhotoGalleryByNameQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

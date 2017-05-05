@@ -1,16 +1,15 @@
 using MediatR;
+using PhotoGalleryService.Features.Core;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System;
-using System.Net.Http;
 
 using static PhotoGalleryService.Features.PhotoGalleries.AddOrUpdatePhotoGalleryCommand;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleriesQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByIdQuery;
 using static PhotoGalleryService.Features.PhotoGalleries.RemovePhotoGalleryCommand;
 using static PhotoGalleryService.Features.PhotoGalleries.GetLatestGalleriesQuery;
-using PhotoGalleryService.Features.Core;
+using static PhotoGalleryService.Features.PhotoGalleries.GetPhotoGalleryByNameQuery;
 
 namespace PhotoGalleryService.Features.PhotoGalleries
 {
@@ -48,6 +47,16 @@ namespace PhotoGalleryService.Features.PhotoGalleries
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetPhotoGalleriesRequest();
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("getByName")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(GetPhotoGalleryByNameResponse))]
+        public async Task<IHttpActionResult> GetByName([FromUri]GetPhotoGalleryByNameRequest request)
+        {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }

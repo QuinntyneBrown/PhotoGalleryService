@@ -560,6 +560,8 @@
     <TypeScriptCompile Include="src\app\photo-galleries\photo-gallery.model.ts" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\photo-gallery-service - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\photo-gallery-service - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\propose-idea - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\propose-idea - Web Deploy.pubxml" />
   </ItemGroup>
