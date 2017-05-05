@@ -28,7 +28,7 @@ export class PhotoGalleryService {
         return this._fetch({ url: `${environment.baseUrl}api/photogallery/add`, method: `POST`, data: { photoGallery }, authRequired: true  });
     }
 
-    public remove(options: { id : number }) {
+    public remove(options: { id: number }) {
         return this._fetch({ url: `${environment.baseUrl}api/photogallery/remove?id=${options.id}`, method: `DELETE`, authRequired: true  });
     }
     

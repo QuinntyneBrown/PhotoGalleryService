@@ -59,7 +59,7 @@ export class PhotoGalleryMasterDetailComponent extends HTMLElement {
 
     public async onPhotoGalleryDelete(e) {
 
-        await this._photoGalleryService.remove(e.detail.photoGallery.id);
+        await this._photoGalleryService.remove({ id: e.detail.photoGallery.id });
         this.photoGalleries = await this._photoGalleryService.get();
         
         this.photoGalleryListElement.setAttribute("photo-galleries", JSON.stringify(this.photoGalleries));

@@ -32,6 +32,7 @@ namespace PhotoGalleryService.Features.Photos
             {
                 var entity = await _context.Photos
                     .Include(x => x.Tenant)
+                    .Include(x => x.PhotoGallery)
                     .SingleOrDefaultAsync(x => x.Id == request.Photo.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 
                 if (entity == null) {
@@ -40,6 +41,14 @@ namespace PhotoGalleryService.Features.Photos
                 }
 
                 entity.Name = request.Photo.Name;
+
+                entity.PhotoGalleryId = request.Photo.PhotoGalleryId;
+
+                entity.ImageUrl = request.Photo.ImageUrl;
+
+                entity.OrderIndex = request.Photo.OrderIndex;
+
+                entity.Description = request.Photo.Description;
                 
                 await _context.SaveChangesAsync();
 

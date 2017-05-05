@@ -6,6 +6,8 @@ namespace PhotoGalleryService.Features.Photos
     {        
         public int Id { get; set; }
 
+        public int? PhotoGalleryId { get; set; }
+
         public int? TenantId { get; set; }
 
         public string Name { get; set; }
@@ -22,8 +24,10 @@ namespace PhotoGalleryService.Features.Photos
             var model = new TModel();
 
             model.Id = photo.Id;
-
+            
             model.TenantId = photo.TenantId;
+
+            model.PhotoGalleryId = photo.PhotoGalleryId;
 
             model.Name = photo.Name;
 

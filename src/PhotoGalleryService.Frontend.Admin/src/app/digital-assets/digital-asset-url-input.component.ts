@@ -43,7 +43,7 @@ export class DigitalAssetUrlInputComponent extends HTMLElement {
             const data = packageFiles(e.dataTransfer.files);
 
             const results = await this._digitalAssetService.upload({ data: data }) as string;
-            this.inputElement.value = JSON.parse(results).digitalAssets[0].relativePath;           
+            this.inputElement.value = JSON.parse(results).digitalAssets[0].url;           
         }
     }
 
